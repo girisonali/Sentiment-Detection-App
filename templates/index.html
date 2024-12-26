@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(45deg, #f6d365, #fda085); /* Gradient background */
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 35%;
+            margin: 100px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 20px; /* More rounded corners */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Soft, modern shadow */
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 85%;
+            padding: 12px;
+            font-size: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 10px; /* Rounded borders */
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        input[type="text"]:focus {
+            border-color: #007bff;
+        }
+
+        button {
+            padding: 12px 20px;
+            font-size: 1rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 10px; /* Rounded corners for button */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            font-size: 1.4rem;
+            border-radius: 10px; /* Rounded borders for result box */
+            color: white;
+            font-weight: bold;
+        }
+
+        .positive {
+            background-color: #28a745; /* Rich Green */
+        }
+
+        .negative {
+            background-color: #dc3545; /* Bold Red */
+        }
+
+        .neutral {
+            background-color: #6c757d; /* Muted Gray */
+        }
+
+        /* Additional Styling for Responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            input[type="text"] {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sentiment Analysis</h1>
+        <form method="POST">
+            <input type="text" name="text" placeholder="Enter text" required>
+            <button type="submit">Submit</button>
+        </form>
+
+        {% if sentiment %}
+        <div class="result {{ sentiment|lower }}">
+            {{ sentiment }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
